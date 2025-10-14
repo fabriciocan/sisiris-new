@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('membros', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('assembleia_id')->constrained('assembleias')->onDelete('cascade');
             $table->string('nome_completo');
             $table->date('data_nascimento');

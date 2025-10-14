@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('ticket_anexos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
+            $table->foreignUuid('ticket_id')->constrained('tickets')->onDelete('cascade');
             $table->string('nome_arquivo');
             $table->string('caminho_arquivo');
             $table->string('tipo_arquivo');
             $table->integer('tamanho'); // bytes
-            $table->foreignId('uploaded_by')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('uploaded_by')->constrained('users')->onDelete('cascade');
             $table->timestamps();
 
             // Indexes

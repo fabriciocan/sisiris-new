@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cargos_assembleia', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assembleia_id')->constrained('assembleias')->onDelete('cascade');
-            $table->foreignId('membro_id')->nullable()->constrained('membros')->onDelete('set null');
+            $table->foreignUuid('membro_id')->nullable()->constrained('membros')->onDelete('set null');
             $table->foreignId('tipo_cargo_id')->constrained('tipos_cargos_assembleia')->onDelete('cascade');
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();

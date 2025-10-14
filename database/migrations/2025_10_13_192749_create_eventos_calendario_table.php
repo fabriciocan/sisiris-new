@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('local')->nullable();
             $table->text('endereco')->nullable();
             $table->boolean('publico')->default(false); // Visível para meninas ativas
-            $table->foreignId('criado_por')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('criado_por')->constrained('users')->onDelete('cascade');
             $table->string('cor_evento')->nullable(); // Hex color para calendário
             $table->timestamps();
             $table->softDeletes();

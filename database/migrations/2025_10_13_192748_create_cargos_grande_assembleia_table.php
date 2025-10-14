@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('cargos_grande_assembleia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membro_id')->constrained('membros')->onDelete('cascade');
+            $table->foreignUuid('membro_id')->constrained('membros')->onDelete('cascade');
             $table->foreignId('tipo_cargo_id')->constrained('tipos_cargos_assembleia')->onDelete('cascade');
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();
             $table->boolean('ativo')->default(true);
-            $table->foreignId('atribuido_por')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('atribuido_por')->constrained('users')->onDelete('cascade');
             $table->text('observacoes')->nullable();
             $table->timestamps();
 

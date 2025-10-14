@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('protocolo_taxas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('protocolo_id')->constrained('protocolos')->onDelete('cascade');
+            $table->foreignUuid('protocolo_id')->constrained('protocolos')->onDelete('cascade');
             $table->string('descricao'); // ex: "Taxa de Iniciação"
             $table->decimal('valor', 10, 2);
             $table->boolean('pago')->default(false);

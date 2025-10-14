@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('numero_ticket')->unique(); // ex: "TKT-2025-001"
             $table->foreignId('assembleia_id')->nullable()->constrained('assembleias')->onDelete('set null');
             $table->foreignId('comissao_id')->nullable()->constrained('comissoes')->onDelete('set null');
-            $table->foreignId('solicitante_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('responsavel_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignUuid('solicitante_id')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('responsavel_id')->nullable()->constrained('users')->onDelete('set null');
             $table->enum('categoria', ['duvida', 'suporte_tecnico', 'financeiro', 'ritual', 'evento', 'administrativo', 'outros']);
             $table->string('assunto');
             $table->text('descricao');

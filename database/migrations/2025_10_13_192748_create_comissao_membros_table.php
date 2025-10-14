@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('comissao_membros', function (Blueprint $table) {
             $table->id();
             $table->foreignId('comissao_id')->constrained('comissoes')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
             $table->enum('cargo', ['presidente', 'membro']);
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('protocolos', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('numero_protocolo')->unique(); // ex: "PR-2025-001"
             $table->foreignId('assembleia_id')->constrained('assembleias')->onDelete('cascade');
             $table->enum('tipo', ['iniciacao', 'transferencia', 'afastamento', 'retorno', 'maioridade', 'desligamento', 'premios_honrarias']);
             $table->string('titulo');
             $table->text('descricao');
-            $table->foreignId('membro_id')->nullable()->constrained('membros')->onDelete('set null');
-            $table->foreignId('solicitante_id')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('membro_id')->nullable()->constrained('membros')->onDelete('set null');
+            $table->foreignUuid('solicitante_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['rascunho', 'pendente', 'em_analise', 'aprovado', 'rejeitado', 'concluido', 'cancelado']);
             $table->enum('prioridade', ['baixa', 'normal', 'alta', 'urgente'])->default('normal');
             $table->dateTime('data_solicitacao');

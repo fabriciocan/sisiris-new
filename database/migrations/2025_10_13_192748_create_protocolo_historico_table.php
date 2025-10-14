@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('protocolo_historico', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('protocolo_id')->constrained('protocolos')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('protocolo_id')->constrained('protocolos')->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
             $table->string('status_anterior');
             $table->string('status_novo');
             $table->text('comentario')->nullable();

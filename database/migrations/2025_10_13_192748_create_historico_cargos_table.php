@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('historico_cargos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membro_id')->constrained('membros')->onDelete('cascade');
+            $table->foreignUuid('membro_id')->constrained('membros')->onDelete('cascade');
             $table->foreignId('tipo_cargo_id')->constrained('tipos_cargos_assembleia')->onDelete('cascade');
             $table->foreignId('cargo_assembleia_id')->nullable()->constrained('cargos_assembleia')->onDelete('set null');
             $table->foreignId('cargo_grande_assembleia_id')->nullable()->constrained('cargos_grande_assembleia')->onDelete('set null');

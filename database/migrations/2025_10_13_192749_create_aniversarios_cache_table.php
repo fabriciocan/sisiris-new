@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('aniversarios_cache', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('membro_id')->constrained('membros')->onDelete('cascade');
+            $table->foreignUuid('membro_id')->constrained('membros')->onDelete('cascade');
             $table->foreignId('assembleia_id')->constrained('assembleias')->onDelete('cascade');
             $table->enum('tipo', ['membro', 'iniciacao', 'maioridade']);
             $table->integer('mes'); // 1-12

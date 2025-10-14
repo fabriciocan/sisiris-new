@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ticket_respostas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignUuid('ticket_id')->constrained('tickets')->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
             $table->text('mensagem');
             $table->boolean('interno')->default(false); // Nota interna, não visível ao solicitante
             $table->timestamp('created_at');
