@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tipos_cargos_assembleia', function (Blueprint $table) {
             $table->id();
             $table->string('nome'); // ex: "Ilustre Preceptora", "Fé", "Grande Ilustre Preceptora"
-            $table->enum('categoria', ['administrativo', 'menina', 'grande_assembleia']);
+            $table->enum('categoria', ['administrativo', 'assembleia', 'grande_assembleia']);
             $table->boolean('is_admin')->default(false); // Define se tem acesso administrativo
             $table->integer('ordem')->default(0); // Para ordenação na exibição
             $table->boolean('ativo')->default(true);

@@ -30,7 +30,6 @@ return new class extends Migration
             $table->softDeletes();
 
             // Indexes
-            $table->unique('numero_protocolo');
             $table->index('assembleia_id');
             $table->index('tipo');
             $table->index('status');

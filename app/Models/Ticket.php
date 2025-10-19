@@ -80,6 +80,14 @@ class Ticket extends Model
     }
 
     /**
+     * Relacionamento: Ticket tem várias respostas (alias para RelationManager)
+     */
+    public function ticketRespostas(): HasMany
+    {
+        return $this->hasMany(TicketResposta::class);
+    }
+
+    /**
      * Relacionamento: Ticket tem vários anexos
      */
     public function anexos(): HasMany

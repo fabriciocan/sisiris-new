@@ -11,7 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Registrar middlewares personalizados para controle de acesso
+        $middleware->alias([
+            'assembleia.access' => \App\Http\Middleware\CheckAssembleiaAccess::class,
+            'jurisdiction.permissions' => \App\Http\Middleware\CheckJurisdictionPermissions::class,
+            'protect.sensitive' => \App\Http\Middleware\ProtectSensitiveOperations::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

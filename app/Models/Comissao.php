@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comissao extends Model
 {
@@ -37,6 +38,22 @@ class Comissao extends Model
         return $this->belongsToMany(User::class, 'comissao_membros')
             ->withPivot('cargo', 'data_inicio', 'data_fim', 'ativo')
             ->withTimestamps();
+    }
+
+    /**
+     * Relacionamento: Alias para usuarios() - Membros da comissão
+     */
+    public function membros(): BelongsToMany
+    {
+        return $this->usuarios();
+    }
+
+    /**
+     * Relacionamento: Comissão tem vários registros de membros
+     */
+    public function comissaoMembros(): HasMany
+    {
+        return $this->hasMany(ComissaoMembro::class);
     }
 
     /**
